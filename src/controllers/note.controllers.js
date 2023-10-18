@@ -15,9 +15,9 @@ router.post("/add-notes", async (req, res) => {
   }
 });
 
-router.get("/get-notes/:authorId", authTokenVerification, async (req, res) => {
+router.get("/get-notes", authTokenVerification, async (req, res) => {
   try {
-    const notes = await Note.find({authorId: req.params.authorId}).lean().exec();
+    const notes = await Note.find({authorId: req.user._id}).lean().exec();
     return res.status(200).send({user: req.user, notes});
   } catch (err) {
       return res.status(500).send(err);
