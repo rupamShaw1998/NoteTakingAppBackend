@@ -1,6 +1,6 @@
 const express = require("express");
 const Note = require("../models/note.models");
-const authTokenVerification = require("../middleware/auth");
+const authTokenVerification = require("../middlewares/auth");
 
 const router = express.Router();
 
