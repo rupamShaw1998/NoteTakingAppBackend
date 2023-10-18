@@ -24,6 +24,15 @@ router.get("/get-notes", authTokenVerification, async (req, res) => {
   }
 });
 
+router.get("/get-notes/:id", authTokenVerification, async (req, res) => {
+    try {
+        const note = await Note.findById(req.params.id);
+        return res.status(200).send(note);
+    } catch (err) {
+        return res.status(500).send(err);
+    }
+});
+
 router.patch("/update/:id", async (req, res) => {
   try {
     const updatedNote = await Note.findByIdAndUpdate(req.params.id, req.body, { new: true });
