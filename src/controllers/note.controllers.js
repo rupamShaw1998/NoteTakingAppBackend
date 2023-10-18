@@ -4,7 +4,7 @@ const authTokenVerification = require("../middlewares/auth");
 
 const router = express.Router();
 
-router.post("/add", async (req, res) => {
+router.post("/add-notes", async (req, res) => {
   try {
     const { authorId, title, content } = req.body;
 
